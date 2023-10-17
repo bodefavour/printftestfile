@@ -75,4 +75,5 @@ int _printf(const char *format, ...)
 
 int main(){
     _printf("Leo\n");
+    _printf("Leo %c\n", 'L');
 }
