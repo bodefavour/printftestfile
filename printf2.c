@@ -10,3 +10,33 @@ int _printf(const char *format, ...)
         return (-1);
 
     va_start(list_of_allargs, format);
+
+    while(*format){
+        if (*format == '%'){
+            format++;
+            if (*format == '%'){
+                print_allchars += fputchar('%');
+            }
+            else if (*format == 'c'){
+                print_allchars += _putws(va_arg(list_of_allargs, int));
+            }
+            else if (*format == 's'){
+                print_allchars += _putws(va_arg(list_of_allargs, char *));
+            }
+        }
+        else{
+            print_allchars += fputchar(*format);
+        }
+        format++;
+    }
+
+    va_end(list_of_allargs);
+
+    return list_of_allargs;
+
+}
+
+int main(){
+    _printf("Leo\n");
+    _printf("Leo %c\n", 'L');
+}
