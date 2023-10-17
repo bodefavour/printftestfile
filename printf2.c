@@ -18,7 +18,9 @@ int _printf(const char *format, ...)
                 print_allchars += fputchar('%');
             }
             else if (*format == 'c'){
-                print_allchars += _putws(va_arg(list_of_allargs, int));
+                char c = va_arg(list_of_allargs, int);
+                write(1, &c, 1);
+                print_allchars++;
             }
             else if (*format == 's'){
                 print_allchars += _putws(va_arg(list_of_allargs, char *));
